@@ -728,6 +728,13 @@ void SerialMonitor(void)
 #ifdef DEBUG_ENABLE_BY_USART2
 				TxDString("USB Power Off!\r\n");
 #endif
+
+#ifdef DEBUG_ENABLE_BY_USART2
+				TxDString("\r\n Go: 0x");
+				TxDHex32(JumpAddress);
+				TxDString("\r\n");
+#endif
+
 				Delay(100);
 				Jump_To_Application();
 			}
@@ -1229,9 +1236,10 @@ void GPIO_Configuration(void)
 	GPIO_InitTypeDef GPIO_InitStructure;
 
 
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;//±ä±Þ º¹±¸ ¸ðµå
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_10MHz;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;
+	//GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
 	GPIO_Init(GPIOA, &GPIO_InitStructure);
 
 
